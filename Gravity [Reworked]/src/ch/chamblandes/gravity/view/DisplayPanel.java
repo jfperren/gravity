@@ -1,4 +1,4 @@
-package ch.chamblandes.view;
+package ch.chamblandes.gravity.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,9 +15,9 @@ public class DisplayPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     public static final int HEIGHT = 750; // hauteur du dessin
-    public static final int WIDTH = HEIGHT / 2; // largeur du
-    public static final int MARGIN_HEIGHT = 10; // marge en haut
-    public static final int MARGIN_WIDTH = 10; // marge à gauche
+    public static final int WIDTH = 375; // largeur du
+    public static final int MARGIN_TOP = 10; // marge en haut
+    public static final int MARGIN_LEFT = 10; // marge à gauche
 
     private ScreenManager screenManager;
 
@@ -45,83 +45,83 @@ public class DisplayPanel extends JPanel {
 
             case TITLE: // Ecran titre
 
-                etoileTitre.paint(g);
-                asteroideTitre1.paint(g);
-                asteroideTitre2.paint(g);
-                asteroideTitre3.paint(g);
-                asteroideTitre4.paint(g);
-                asteroideTitre5.paint(g);
-                asteroideTitre6.paint(g);
-                asteroideTitre7.paint(g);
-                asteroideTitre8.paint(g);
-                asteroideTitre9.paint(g);
-                asteroideTitre10.paint(g);
-                planeteTitre1.paint(g);
-                planeteTitre2.paint(g);
-                planeteTitre3.paint(g);
-                titre.paint(g);
-                playBouton.paint(g);
-                fuseeTitre.paint(g);
-                cadreBas.paint(g);
-                cadreNom.paint(g);
-                instructionTitre.paint(g);
-                nomdujoueur.paint(g);
+                Drawings.etoileTitre.paint(g);
+                Drawings.asteroideTitre1.paint(g);
+                Drawings.asteroideTitre2.paint(g);
+                Drawings.asteroideTitre3.paint(g);
+                Drawings.asteroideTitre4.paint(g);
+                Drawings.asteroideTitre5.paint(g);
+                Drawings.asteroideTitre6.paint(g);
+                Drawings.asteroideTitre7.paint(g);
+                Drawings.asteroideTitre8.paint(g);
+                Drawings.asteroideTitre9.paint(g);
+                Drawings.asteroideTitre10.paint(g);
+                Drawings.planeteTitre1.paint(g);
+                Drawings.planeteTitre2.paint(g);
+                Drawings.planeteTitre3.paint(g);
+                Drawings.titre.paint(g);
+                Drawings.playBouton.paint(g);
+                Drawings.fuseeTitre.paint(g);
+                Drawings.cadreBas.paint(g);
+                Drawings.cadreNom.paint(g);
+                Drawings.instructionTitre.paint(g);
+                Drawings.nomdujoueur.paint(g);
 
                 break;
 
             case HELP: // écran d'aide
 
-                titreAide.paint(g);
-                butdujeu.paint(g);
-                butdujeu2.paint(g);
-                planeteAide.paint(g);
-                etoileAide.paint(g);
-                trounoirAide.paint(g);
-                asteroideAide.paint(g);
-                attraction1.paint(g);
-                attraction2.paint(g);
-                aidefusee.paint(g);
-                aidefusee2.paint(g);
-                aidefuseeW.paint(g);
+                Drawings.titreAide.paint(g);
+                Drawings.butdujeu.paint(g);
+                Drawings.butdujeu2.paint(g);
+                Drawings.planeteAide.paint(g);
+                Drawings.etoileAide.paint(g);
+                Drawings.trounoirAide.paint(g);
+                Drawings.asteroideAide.paint(g);
+                Drawings.attraction1.paint(g);
+                Drawings.attraction2.paint(g);
+                Drawings.aidefusee.paint(g);
+                Drawings.aidefusee2.paint(g);
+                Drawings.aidefuseeW.paint(g);
                 // aidefuseeS.paint(g);
-                aidefuseeA.paint(g);
+                Drawings.aidefuseeA.paint(g);
                 // aidefuseeD.paint(g);
-                aidefrottements1.paint(g);
-                aidefrottements2.paint(g);
-                aidecarburant1.paint(g);
-                aidecarburant2.paint(g);
-                cadreBas.paint(g);
-                fuseeAide.paint(g);
+                Drawings.aidefrottements1.paint(g);
+                Drawings.aidefrottements2.paint(g);
+                Drawings.aidecarburant1.paint(g);
+                Drawings.aidecarburant2.paint(g);
+                Drawings.cadreBas.paint(g);
+                Drawings.fuseeAide.paint(g);
                 if (isComingFromGame) {
-                    AideToGame.paint(g);
+                    Drawings.AideToGame.paint(g);
                 } else {
-                    AideToMenu.paint(g);
+                    Drawings.AideToMenu.paint(g);
                 }
 
                 break;
             case MENU:// Menu
-                titreMenu.paint(g);
-                cadre6.paint(g);
-                cadre1.paint(g);
-                cadre2.paint(g);
-                cadre3.paint(g);
-                cadre4.paint(g);
-                cadre5.paint(g);
-                planeteMenu1.paint(g);
-                planeteMenu2.paint(g);
-                etoileMenu1.paint(g);
-                etoileMenu2.paint(g);
-                trouNoirMenu1.paint(g);
-                trouNoirMenu2.paint(g);
-                menuNiveau1Bouton.paint(g);
-                menuNiveau2Bouton.paint(g);
-                menuNiveau3Bouton.paint(g);
-                menuControlesBouton.paint(g);
-                menuCreditsBouton.paint(g);
-                menuScoresBouton.paint(g);
+                Drawings.titreMenu.paint(g);
+                Drawings.cadre6.paint(g);
+                Drawings.cadre1.paint(g);
+                Drawings.cadre2.paint(g);
+                Drawings.cadre3.paint(g);
+                Drawings.cadre4.paint(g);
+                Drawings.cadre5.paint(g);
+                Drawings.planeteMenu1.paint(g);
+                Drawings.planeteMenu2.paint(g);
+                Drawings.etoileMenu1.paint(g);
+                Drawings.etoileMenu2.paint(g);
+                Drawings.trouNoirMenu1.paint(g);
+                Drawings.trouNoirMenu2.paint(g);
+                Drawings.menuNiveau1Bouton.paint(g);
+                Drawings.menuNiveau2Bouton.paint(g);
+                Drawings.menuNiveau3Bouton.paint(g);
+                Drawings.menuControlesBouton.paint(g);
+                Drawings.menuCreditsBouton.paint(g);
+                Drawings.menuScoresBouton.paint(g);
                 if (isCheatCodeActivated) {
-                    cadre7.paint(g);
-                    menuCheatCodeBouton.paint(g);
+                    Drawings.cadre7.paint(g);
+                    Drawings.menuCheatCodeBouton.paint(g);
                 }
                 break;
             case GAME:
@@ -228,7 +228,7 @@ public class DisplayPanel extends JPanel {
                     stringBestScore = stringPlayerScore;
                 }
                 g.drawString(stringBestScore, (39 * dessW) / 300, (21 * dessH) / 300);
-                cadreBestScore.paint(g);
+                Drawings.cadreBestScore.paint(g);
                 // Dessine la barre de fuel
                 double f = fusee.getFuel();
                 g.setColor(new Color((int) ((255 * (100 - f)) / 100), (int) ((255 * f) / 100), 0));
@@ -244,13 +244,13 @@ public class DisplayPanel extends JPanel {
                 g.fillRect((26 * dessW) / 150, (276 * dessH) / 300, (int) (((m / munMax) * dessW * 107) / 150),
                     (3 * dessH) / 300);
                 System.out.println(m);
-                cadreFuel.paint(g);
-                fuelLeft.paint(g);
-                votreScore.paint(g);
-                meilleurScore.paint(g);
+                Drawings.cadreFuel.paint(g);
+                Drawings.fuelLeft.paint(g);
+                Drawings.votreScore.paint(g);
+                Drawings.meilleurScore.paint(g);
 
-                cadreMun.paint(g);
-                munLeft.paint(g);
+                Drawings.cadreMun.paint(g);
+                Drawings.munLeft.paint(g);
 
                 // Méthode permettant de dessiner tous les projectiles de la
                 // liste.

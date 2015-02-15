@@ -12,7 +12,7 @@ import java.util.Timer;
 import ch.chamblandes.gravity.displayables.Explosion;
 import ch.chamblandes.gravity.model.RefreshTask;
 import ch.chamblandes.gravity.scores.ScoreIO;
-import ch.chamblandes.view.DisplayPanel;
+import ch.chamblandes.gravity.view.DisplayPanel;
 
 /**
  * @author julienperrenoud

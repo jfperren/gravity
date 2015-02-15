@@ -45,7 +45,6 @@ public class GravityApplet extends JApplet {
                 @Override
                 public void run() {
                     GravityApplet.this.initComponents();
-                    GravityApplet.this.myInit(); // Initialisations personnelles
 
                 }
             });
@@ -74,15 +73,6 @@ public class GravityApplet extends JApplet {
         return this.gameEngine;
     }
 
-    public void myInit() {
-
-        this.display.setBounds(DisplayPanel.MARGIN_LEFT, DisplayPanel.MARGIN_TOP, DisplayPanel.WIDTH,
-            DisplayPanel.HEIGHT);
-        this.display.setDoubleBuffered(true); // pour empêcher que l'affichage
-
-        this.add(this.display); // rajouter le dessin sur l'applette
-    }
-
     /**
      * This method is called from within the init() method to
      * initialize the form.
@@ -105,6 +95,10 @@ public class GravityApplet extends JApplet {
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 314,
             Short.MAX_VALUE));
 
-        // Starts
+        this.display.setBounds(DisplayPanel.MARGIN_LEFT, DisplayPanel.MARGIN_TOP, DisplayPanel.WIDTH,
+            DisplayPanel.HEIGHT);
+        this.display.setDoubleBuffered(true);
+
+        this.add(this.display);
     }
 }

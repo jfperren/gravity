@@ -15,7 +15,11 @@ import ch.chamblandes.gravity.gameobjects.Star;
 
 public class GameEngine {
 
-    public static int UNIT = 750;
+    public static final int UNIT = 1;
+    public static final int WIDTH = 375;
+    public static final int HEIGHT = 750;
+
+    public static final int DT = 40;
 
     public enum Level {
         ONE(5000, 5000),
@@ -204,7 +208,7 @@ public class GameEngine {
         // Reset spacecraft values
         this.spacecraft.setAngle(Spacecraft.STARTING_ANGLE);
         this.spacecraft.setAngularSpeed(Spacecraft.STARTING_ANGULAR_SPEED);
-        this.spacecraft.setRadius(PANEL_HEIGHT / 40);
+        this.spacecraft.setRadius(Spacecraft.RADIUS);
         this.spacecraft.setFuel(Spacecraft.MAX_FUEL);
         this.spacecraft.setAmmo(Spacecraft.MAX_AMMO);
 

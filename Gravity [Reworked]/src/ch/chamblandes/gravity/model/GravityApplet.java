@@ -27,11 +27,11 @@ public class GravityApplet extends JApplet {
     private RessourceManager drawingsManager;
 
     public GravityApplet() {
-        this.display = new DisplayPanel();
+        this.display = new DisplayPanel(this);
         this.screenManager = new ScreenManager();
         this.scoreManager = new ScoreManager();
         this.cheatManager = new CheatManager();
-        this.refreshTask = new RefreshTask();
+        this.refreshTask = new RefreshTask(this.gameEngine);
         this.gameEngine = new GameEngine();
         this.drawingsManager = new RessourceManager();
     }
@@ -76,7 +76,8 @@ public class GravityApplet extends JApplet {
 
     public void myInit() {
 
-        this.display.setBounds(MARGIN_WIDTH, MARGIN_HEIGHT, PANEL_WIDTH, PANEL_HEIGHT); // Emplacement
+        this.display.setBounds(DisplayPanel.MARGIN_LEFT, DisplayPanel.MARGIN_TOP, DisplayPanel.WIDTH,
+            DisplayPanel.HEIGHT);
         this.display.setDoubleBuffered(true); // pour empêcher que l'affichage
 
         this.add(this.display); // rajouter le dessin sur l'applette

@@ -1,14 +1,15 @@
 package ch.chamblandes.gravity.gameobjects;
 
-import static ch.chamblandes.gravity.model.GravityApplet.PANEL_HEIGHT;
+import static ch.chamblandes.gravity.gameobjects.GameObject.GameObjectType.PROJECTILE;
+import static ch.chamblandes.gravity.model.GameEngine.UNIT;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class Projectile extends CollidableGameObject {
 
-    public static final int RADIUS = PANEL_HEIGHT / 375;
-    public static final int MASS = 5;
+    public static final double RADIUS = UNIT * 2;
+    public static final double MASS = 5;
 
     private Color color;
 
@@ -31,6 +32,6 @@ public class Projectile extends CollidableGameObject {
 
     @Override
     public GameObjectType getType() {
-        return GameObjectType.PROJECTILE;
+        return PROJECTILE;
     }
 }

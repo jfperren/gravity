@@ -1,39 +1,30 @@
 package ch.chamblandes.gravity.gameobjects;
 
+import static ch.chamblandes.gravity.gameobjects.GameObject.GameObjectType.GASCLOUD;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
-import ch.chamblandes.gravity.model.GravityApplet.GameObject;
-
 public class GasCloud extends GameObject {
 
-    public GasCloud(double x, double y, double r, Color couleur) {
-        this.couleur = couleur;
-        positionX = x;
-        positionY = y;
-        rayon = r;
-    }
+    private Color color;
 
-    public void avancerY(double y) {
-        positionY = positionY + y;
-    }
+    public GasCloud(double x, double y, double radius, Color color) {
+        super(x, y, radius, 0, 0, 0);
 
-    public double getPositionX() {
-        return positionX;
-    }
-
-    public double getPositionY() {
-        return positionY;
-    }
-
-    public double getRayon() {
-        return rayon;
+        this.color = color;
     }
 
     @Override
     public void paint(Graphics g) {
 
-        g.setColor(couleur);
-        g.fillOval((int) (positionX - rayon), (int) (positionY - rayon), (int) (2 * rayon), (int) (2 * rayon));
+        g.setColor(this.color);
+        g.fillOval((int) (this.getX() - this.getRadius()), (int) (this.getY() - this.getRadius()),
+            (int) (2 * this.getRadius()), (int) (2 * this.getRadius()));
+    }
+
+    @Override
+    public GameObjectType getType() {
+        return GASCLOUD;
     }
 }

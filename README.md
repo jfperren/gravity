@@ -2,7 +2,7 @@
 
 *A Java game about stars and gravitation*
 
-##### Description
+#### Description
 
 Gravity is my first ever Java project. It was done as a Baccalaureat project in 2nd year High School (2010), and at the time I had absoluetly no programmation knowledge at all (which explains why it is so badly coded). Nevertheless, I learned a lot through the process and I believe that coding this little game is what first awoke my interest for Computer Science.
 
@@ -12,7 +12,7 @@ Don't hesitate to write me if you have comments/ideas or if you want to improve 
 
 Julien Perrenoud
 
-##### Infos
+#### Infos
 
 Name : Gravity
 

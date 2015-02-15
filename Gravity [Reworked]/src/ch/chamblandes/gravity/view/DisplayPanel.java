@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import ch.chamblandes.gravity.displayables.Button;
+import ch.chamblandes.gravity.displayables.Displayable;
 import ch.chamblandes.gravity.displayables.TextView;
 import ch.chamblandes.gravity.model.GravityApplet;
 import ch.chamblandes.gravity.model.ScreenManager.Screen;
@@ -39,6 +40,11 @@ public class DisplayPanel extends JPanel {
 
         // Fetch screen to display
         Screen screen = this.applet.getScreenManager().getScreen();
+
+        // Draw images
+        for (Displayable displayable : this.applet.getRessourceManager().getDrawingsForScreen(screen)) {
+            displayable.paint(g);
+        }
 
         // Draw buttons
         for (Button button : this.applet.getRessourceManager().getButtonsForScreen(screen)) {

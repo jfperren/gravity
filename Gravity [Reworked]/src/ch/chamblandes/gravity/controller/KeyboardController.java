@@ -3,7 +3,16 @@ package ch.chamblandes.gravity.controller;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class KeyController extends KeyAdapter {
+import ch.chamblandes.gravity.model.GravityApplet;
+
+public class KeyboardController extends KeyAdapter {
+
+    private GravityApplet applet;
+
+    public KeyboardController(GravityApplet applet) {
+        this.applet = applet;
+    }
+
     @Override
     public void keyPressed(KeyEvent evt) {
 
@@ -13,7 +22,7 @@ public class KeyController extends KeyAdapter {
         // appuyée, et de controler la fusée en conséquence.
         // 37 = VK_LEFT, 38 = VK_UP, 39 = VK_RIGHT, 40 = VK_DOWN
 
-        switch (this.screen) {
+        switch (this.applet.getScreenManager().getScreen()) {
 
         // Page titre
             case 0:

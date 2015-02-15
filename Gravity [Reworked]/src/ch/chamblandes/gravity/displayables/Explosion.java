@@ -3,7 +3,7 @@ package ch.chamblandes.gravity.displayables;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import ch.chamblandes.gravity.Applet;
+import ch.chamblandes.gravity.model.GravityApplet;
 
 public class Explosion extends CircularDisplayable {
 
@@ -19,14 +19,14 @@ public class Explosion extends CircularDisplayable {
     public void explode() {
 
         if (isGrowing) {
-            if (this.getRadius() > (Applet.PANEL_WIDTH / 25)) {
+            if (this.getRadius() > (GravityApplet.PANEL_WIDTH / 25)) {
                 isGrowing = false;
             } else {
                 this.setRadius(this.getRadius() + (this.getRadius() / 5));
             }
 
         } else {
-            if (this.getRadius() > (Applet.PANEL_WIDTH / 50)) {
+            if (this.getRadius() > (GravityApplet.PANEL_WIDTH / 50)) {
                 this.setRadius(this.getRadius() - (this.getRadius() / 30));
             } else if (this.getRadius() > 0) {
                 this.setRadius(this.getRadius() - (this.getRadius() / 10));

@@ -1,7 +1,7 @@
 package ch.chamblandes.gravity.gameobjects;
 
-import static ch.chamblandes.gravity.Applet.PANEL_HEIGHT;
-import static ch.chamblandes.gravity.Applet.PANEL_WIDTH;
+import static ch.chamblandes.gravity.model.Applet.PANEL_HEIGHT;
+import static ch.chamblandes.gravity.model.Applet.PANEL_WIDTH;
 
 import java.awt.Color;
 import java.awt.Graphics;

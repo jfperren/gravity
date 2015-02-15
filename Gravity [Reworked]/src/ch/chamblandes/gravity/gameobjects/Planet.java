@@ -3,8 +3,8 @@ package ch.chamblandes.gravity.gameobjects;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import ch.chamblandes.gravity.Applet.GameObject;
 import ch.chamblandes.gravity.displayables.Explosion;
+import ch.chamblandes.gravity.model.GravityApplet.GameObject;
 
 public class Planet extends GameObject {
 

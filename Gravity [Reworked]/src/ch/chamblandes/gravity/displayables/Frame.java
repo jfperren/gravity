@@ -3,7 +3,7 @@ package ch.chamblandes.gravity.displayables;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Frame extends RectangularDisplayable {
+public abstract class Frame extends RectangularDisplayable {
 
     double border;// épaisseur de la bordure
     Color couleur;// couleur du cadre.
@@ -13,6 +13,19 @@ public class Frame extends RectangularDisplayable {
         this.border = bordure;
         this.couleur = couleur;
     }
+
+    public void dispatchClick(double x, double y) {
+        if (this.contains(x, y)) {
+            this.onClick();
+        }
+    }
+
+    public boolean contains(double x, double y) {
+        return (this.getX() < x) && (x < (this.getX() + this.getWidth())) && (this.getY() < y)
+            && (y < (this.getY() + this.getHeight()));
+    }
+
+    public abstract void onClick();
 
     @Override
     public void paint(Graphics g) {

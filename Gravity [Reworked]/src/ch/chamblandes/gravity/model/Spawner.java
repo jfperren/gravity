@@ -1,6 +1,6 @@
 package ch.chamblandes.gravity.model;
 
-import static ch.chamblandes.gravity.Applet.PANEL_HEIGHT;
+import static ch.chamblandes.gravity.model.GravityApplet.PANEL_HEIGHT;
 
 import java.awt.Color;
 

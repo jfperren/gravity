@@ -1,23 +1,31 @@
 package ch.chamblandes.gravity.controller;
 
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import ch.chamblandes.gravity.model.ScreenManager;
+import ch.chamblandes.gravity.displayables.Frame;
+import ch.chamblandes.gravity.model.GravityApplet;
+import ch.chamblandes.gravity.view.DisplayPanel;
 
 public class MouseController extends MouseAdapter {
 
-    private ScreenManager screenManager;
+    private GravityApplet applet;
 
-    public MouseController(ScreenManager screenManager) {
-        this.screenManager = screenManager;
+    public MouseController(GravityApplet applet) {
+        this.applet = applet;
     }
 
     @Override
     public void mouseClicked(MouseEvent evt) {
-        double x = evt.getX() - MARGIN_WIDTH;
-        double y = evt.getY() - MARGIN_HEIGHT;
+        double x = evt.getX() - DisplayPanel.MARGIN_LEFT;
+        double y = evt.getY() - DisplayPanel.MARGIN_TOP;
 
-        switch (this.screenManager.getScreen()) {
+        for (Frame frame : this.applet.getDrawingsManager().getFrameForScreen(
+            this.applet.getScreenManager().getScreen())) {
+            frame.dispatchClick(x, y);
+        }
+
+        switch (this.applet.getScreenManager().getScreen()) {
 
             case 0:// Ecran titre
                 if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4)) && (y > ((145 * PANEL_HEIGHT) / 160))

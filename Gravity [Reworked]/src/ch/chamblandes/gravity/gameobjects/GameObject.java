@@ -2,7 +2,9 @@ package ch.chamblandes.gravity.gameobjects;
 
 import java.awt.Graphics;
 
-public abstract class GameObject {
+import ch.chamblandes.gravity.displayables.Displayable;
+
+public abstract class GameObject extends Displayable {
 
     public enum GameObjectType {
         ASTEROID,
@@ -26,6 +28,8 @@ public abstract class GameObject {
     private double ySpeed;
 
     public GameObject(double x, double y, double radius, double mass, double xSpeed, double ySpeed) {
+        super(x, y);
+
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -57,6 +61,7 @@ public abstract class GameObject {
 
     public abstract GameObjectType getType();
 
+    @Override
     public double getX() {
         return this.x;
     }
@@ -65,6 +70,7 @@ public abstract class GameObject {
         return this.xSpeed;
     }
 
+    @Override
     public double getY() {
         return this.y;
     }
@@ -77,6 +83,7 @@ public abstract class GameObject {
         this.translate(this.xSpeed, this.ySpeed);
     }
 
+    @Override
     public abstract void paint(Graphics g);
 
     public void setMass(double newMass) {
@@ -87,6 +94,7 @@ public abstract class GameObject {
         this.radius = newRadius;
     }
 
+    @Override
     public void setX(double newX) {
         this.x = newX;
     }
@@ -95,6 +103,7 @@ public abstract class GameObject {
         this.xSpeed = newXSpeed;
     }
 
+    @Override
     public void setY(double newY) {
         this.y = newY;
     }

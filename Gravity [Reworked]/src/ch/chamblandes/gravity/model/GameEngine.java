@@ -1,7 +1,5 @@
 package ch.chamblandes.gravity.model;
 
-import static ch.chamblandes.gravity.Applet.PANEL_HEIGHT;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,27 +36,6 @@ public class GameEngine {
 
         public int getObjectCounterInitValue() {
             return this.objectCounterInitValue;
-        }
-    }
-
-    private enum Cheat {
-        ANTIGRAVITY,
-        STARWARS,
-        INFINITE_FUEL,
-        INFINITE_AMMO;
-
-        private boolean isActivated;
-
-        private Cheat() {
-            this.isActivated = false;
-        }
-
-        void setActivated(boolean isActivated) {
-            this.isActivated = isActivated;
-        }
-
-        boolean isActivated() {
-            return this.isActivated;
         }
     }
 

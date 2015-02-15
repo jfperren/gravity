@@ -5,15 +5,12 @@
 package ch.chamblandes.gravity;
 
 import java.awt.Color;
-import java.awt.geom.GeneralPath;
-import java.util.ArrayList;
-import java.util.Timer;
 
 import ch.chamblandes.gravity.displayables.Explosion;
 import ch.chamblandes.gravity.model.GameEngine;
 import ch.chamblandes.gravity.model.RefreshTask;
+import ch.chamblandes.gravity.model.ScoreManager;
 import ch.chamblandes.gravity.model.ScreenManager;
-import ch.chamblandes.gravity.scores.ScoreIO;
 import ch.chamblandes.gravity.view.DisplayPanel;
 
 /**
@@ -25,117 +22,13 @@ public class Applet extends javax.swing.JApplet {
 
     private DisplayPanel display = new DisplayPanel(); // écran de jeu
     private ScreenManager screenManager;
+    private ScoreManager scoreManager;
     private RefreshTask refreshTask;
     private GameEngine gameEngine;
-
-    ScoreIO myIO = new ScoreIO();
-    // Définit la taille de l'écran de jeu.
-
-    String playerName = "";
-    double playerScore = 0;
-    int crashAnimation = 0;
-
-    int dt = 50;// Valeur en miliseconde entre chaque repaint()
-
-    // Chaque objet céleste possède une masse qui, pour respecter la formule
-    // originale, est proportionnelle au cube de son
-    // rayon. De plus, pour réguler les différentes masses, elle est
-    // multipliée par ces valeurs :
-    double mPlanete = 1 / 30;// G pour les planètes.
-    double mEtoile = 1 / 100;// G pour les étoiles.
-    double mTrounoir = 1;// G pour les trous noirs.
-
-    double dTakeFuel = 3;// Variable controlant la vitesse de récupération de
-    // fuel
-    int vProjectile = 2;// Variable controlant le rapport entre la vitesse du
-    // vaisseau et celle des projectiles tirés.
-    int vProjectile2 = PANEL_WIDTH / 20;
-
-    int munitions = 30;
-    // Ces deux objets permettent d'envoyer des instructions à intervalle
-    // régulier.
-    public Timer mainTimer = new Timer(); // Création d'un timer permettant de
-    // rafraichir le dessin
-    public RefreshTask refresh = new RefreshTask(); // Méthode appelée par le
-    // timer
-    // ArrayLists with different GameObjects
-
-    int iCollisionType = 0; // Définit une variable permettant de tester la
-    // collision (1=planete, 2=étoile, 3=trounoir,
-    // 4=astéroide)
-    int iCollisionNumber = 0; // Définit une variable pour savoir quel est le
-    // numéro de l'objet touché.
-    boolean isRunning = false; // variable permettant de tester l'état du jeu.
-    double spawnObs = PANEL_HEIGHT / 3; // Crée une variable pour faire
-    // apparaitre des objets dans le jeu.
-    double spawnAst = PANEL_HEIGHT / 3; // Même chose pour les astéroides.
-    // Variable permettant de changer le niveau du jeu.
-    int niveau = 0;
-    double vBackGround = 1 / 3;// Vitesse du fond par rapport au planètes.
-    int iPlaneteExplosion = 5;// Détermine le nombre de coups avant qu'une
-    // planète explose.
-    // Ces objets permettent à la fusée d'avoir une forme plus complexe qu'un
-    // simple carré ou rond.
-    public GeneralPath fusShape = new GeneralPath();
-    public GeneralPath fusDetailShape = new GeneralPath();
-    public GeneralPath fuelShape = new GeneralPath();
-
-    public GeneralPath mainStarWarsShipShape = new GeneralPath();
-    public GeneralPath detailStarWarsShipShape = new GeneralPath();
-
-    public GeneralPath cockpitStarWarsShipShape = new GeneralPath();
-    public GeneralPath fusDetail2Shape = new GeneralPath();
-    boolean acceleration = false;
-    boolean isConnected = true;
-    String scores1;// String recevant la chaine de caractères de
-    // scoreIO.getScore, niveau 1.
-    String scores2;// String recevant la chaine de caractères de
-    // scoreIO.getScore, niveau 2.
-    String scores3;// String recevant la chaine de caractères de
-
-    double namelength = 0;
-
-    boolean isComingFromGame = false;
-    boolean isGamePlaying = false;
-
-    public int rawScoreTable = 1; // Cette variable permettra de faire défiler
-    // le tableau.
-    public int levelScoreTable = 1;
-
-    public ArrayList<String> unorderedPlayers1 = new ArrayList<String>();
-    public ArrayList<Integer> unorderedScores1 = new ArrayList<Integer>();
-    public ArrayList<String> unorderedPlayers2 = new ArrayList<String>();
-    public ArrayList<Integer> unorderedScores2 = new ArrayList<Integer>();
-    public ArrayList<String> unorderedPlayers3 = new ArrayList<String>();
-    public ArrayList<Integer> unorderedScores3 = new ArrayList<Integer>();
-    public ArrayList<String> orderedPlayers1 = new ArrayList<String>();
-    public ArrayList<Integer> orderedScores1 = new ArrayList<Integer>();
-    public ArrayList<String> orderedPlayers2 = new ArrayList<String>();
-    public ArrayList<Integer> orderedScores2 = new ArrayList<Integer>();
-    public ArrayList<String> orderedPlayers3 = new ArrayList<String>();
-    public ArrayList<Integer> orderedScores3 = new ArrayList<Integer>();
 
     String cheatCode = "";// Chaine de caractere contenant les lettres tapées
     // pour arriver a la page de cheats.
     boolean isCheatCodeActivated = false; // Boolean permettant de testé si la
-
-    public void addScore(int level, String name, int score) {
-        switch (level) {
-            case 0:
-                this.unorderedPlayers1.add(name);
-                this.unorderedScores1.add(score);
-                break;
-            case 1:
-                this.unorderedPlayers2.add(name);
-                this.unorderedScores2.add(score);
-                break;
-            case 2:
-                this.unorderedPlayers3.add(name);
-                this.unorderedScores3.add(score);
-                break;
-        }
-        this.orderLists();
-    }
 
     // Cette classe est celle dont fait partie la fusée.
 

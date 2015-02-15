@@ -9,7 +9,7 @@ import javax.swing.JApplet;
 import ch.chamblandes.gravity.controller.KeyboardController;
 import ch.chamblandes.gravity.controller.MouseController;
 import ch.chamblandes.gravity.view.DisplayPanel;
-import ch.chamblandes.gravity.view.DrawingsManager;
+import ch.chamblandes.gravity.view.RessourceManager;
 
 /**
  * @author julienperrenoud
@@ -24,7 +24,7 @@ public class GravityApplet extends JApplet {
     private CheatManager cheatManager;
     private RefreshTask refreshTask;
     private GameEngine gameEngine;
-    private DrawingsManager drawingsManager;
+    private RessourceManager drawingsManager;
 
     public GravityApplet() {
         this.display = new DisplayPanel();
@@ -33,7 +33,7 @@ public class GravityApplet extends JApplet {
         this.cheatManager = new CheatManager();
         this.refreshTask = new RefreshTask();
         this.gameEngine = new GameEngine();
-        this.drawingsManager = new DrawingsManager();
+        this.drawingsManager = new RessourceManager();
     }
 
     /** Initializes the applet projet */
@@ -54,7 +54,7 @@ public class GravityApplet extends JApplet {
         }
     }
 
-    public DrawingsManager getDrawingsManager() {
+    public RessourceManager getDrawingsManager() {
         return this.drawingsManager;
     }
 

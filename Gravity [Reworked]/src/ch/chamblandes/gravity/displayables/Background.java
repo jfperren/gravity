@@ -1,12 +1,15 @@
 package ch.chamblandes.gravity.displayables;
 
+import static ch.chamblandes.gravity.view.DisplayPanel.HEIGHT;
+import static ch.chamblandes.gravity.view.DisplayPanel.WIDTH;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class Background extends RectangularDisplayable {
 
-    public Background(int x, int y, int width, int height) {
-        super(x, y, width, height);
+    public Background() {
+        super(0, 0, WIDTH, HEIGHT * 3);
     }
 
     public void defiler(double vy) {

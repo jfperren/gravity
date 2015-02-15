@@ -12,7 +12,7 @@ Julien Perrenoud
 
 ## Infos
 
-Name : Gravity
+Name : Gravity \n
 Author : @jfperren
 Date of Creation : 2008
 License :

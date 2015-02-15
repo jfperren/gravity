@@ -4,17 +4,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class Writing extends Displayable {
+public class Text extends Displayable {
 
     String text;
     String font;
     Color fontColor;
 
-    public Writing(String message, String font, int x, int y, Color fontColor) {
+    public Text(double x, double y, String message, String font, Color fontColor) {
         super(x, y);
         this.text = message;
         this.font = font;
         this.fontColor = fontColor;
+    }
+
+    public void setText(String newText) {
+        this.text = newText;
     }
 
     @Override

@@ -16,7 +16,7 @@ Julien Perrenoud
 
 Name : Gravity
 
-Author : [@jfperren](https://github.com/jfperren)
+Author : [Julien Perrenoud](https://github.com/jfperren)
 
 Date of Creation : 2010
 

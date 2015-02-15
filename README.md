@@ -10,8 +10,6 @@ In order to make the code readable, I have started to rewrite it, but it is far 
 
 Don't hesitate to write me if you have comments/ideas or if you want to improve it. :)
 
-Julien Perrenoud
-
 #### Infos
 
 Name : Gravity

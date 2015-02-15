@@ -43,6 +43,16 @@ public class GameEngine {
         }
     }
 
+    public enum Command {
+        ACCELERATE,
+        DECELERATE,
+        TURN_RIGHT,
+        TURN_LEFT,
+        PAUSE,
+        UNPAUSE,
+        FIRE
+    }
+
     private Spacecraft spacecraft = new Spacecraft();
 
     private Set<Planet> planets;
@@ -76,6 +86,10 @@ public class GameEngine {
     public void setLevel(Level newLevel) {
         this.level = newLevel;
         this.reset();
+    }
+
+    public void sendCommand(Command command) {
+        // TODO
     }
 
     public void clearAll() {
@@ -195,6 +209,18 @@ public class GameEngine {
         allObjects.addAll(this.projectiles);
         allObjects.addAll(this.gazes);
         return allObjects;
+    }
+
+    public void startGame() {
+
+    }
+
+    public void stopGame() {
+
+    }
+
+    public void pauseGame() {
+
     }
 
     /**

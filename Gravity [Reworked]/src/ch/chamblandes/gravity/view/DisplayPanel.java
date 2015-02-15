@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import ch.chamblandes.gravity.displayables.Button;
+import ch.chamblandes.gravity.displayables.TextView;
 import ch.chamblandes.gravity.model.GravityApplet;
 import ch.chamblandes.gravity.model.ScreenManager.Screen;
 
@@ -34,14 +35,18 @@ public class DisplayPanel extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Draw background
-        this.applet.getDrawingsManager().getBackground().paint(g);
+        this.applet.getRessourceManager().getBackground().paint(g);
 
         // Fetch screen to display
         Screen screen = this.applet.getScreenManager().getScreen();
 
         // Draw buttons
-        for (Button button : this.applet.getDrawingsManager().getButtonsForScreen(screen)) {
+        for (Button button : this.applet.getRessourceManager().getButtonsForScreen(screen)) {
             button.paint(g);
+        }
+
+        for (TextView textView : this.applet.getRessourceManager().getTextViewsForScreen(screen)) {
+            textView.paint(g);
         }
 
     }

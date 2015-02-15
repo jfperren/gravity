@@ -20,7 +20,7 @@ public class MouseController extends MouseAdapter {
         double x = evt.getX() - DisplayPanel.MARGIN_LEFT;
         double y = evt.getY() - DisplayPanel.MARGIN_TOP;
 
-        for (Button button : this.applet.getDrawingsManager().getButtonsForScreen(
+        for (Button button : this.applet.getRessourceManager().getButtonsForScreen(
             this.applet.getScreenManager().getScreen())) {
             button.dispatchClick(x, y);
         }

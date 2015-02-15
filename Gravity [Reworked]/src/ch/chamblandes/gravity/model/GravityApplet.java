@@ -53,7 +53,7 @@ public class GravityApplet extends JApplet {
         }
     }
 
-    public RessourceManager getDrawingsManager() {
+    public RessourceManager getRessourceManager() {
         return this.drawingsManager;
     }
 
@@ -100,5 +100,8 @@ public class GravityApplet extends JApplet {
         this.display.setDoubleBuffered(true);
 
         this.add(this.display);
+
+        this.resize(DisplayPanel.WIDTH + (2 * DisplayPanel.MARGIN_LEFT), DisplayPanel.HEIGHT
+            + (2 * DisplayPanel.MARGIN_TOP));
     }
 }

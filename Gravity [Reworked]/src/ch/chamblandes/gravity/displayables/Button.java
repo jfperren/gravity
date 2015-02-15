@@ -4,7 +4,7 @@ import static ch.chamblandes.gravity.view.DisplayPanel.HEIGHT;
 
 import java.awt.Color;
 
-public abstract class Button extends FramedText {
+public abstract class Button extends TextView {
 
     public Button(double x, double y, double width, double height, String value) {
         super(x, y, width, height, HEIGHT / 320, Color.white, value, "Impact 24", Color.white);

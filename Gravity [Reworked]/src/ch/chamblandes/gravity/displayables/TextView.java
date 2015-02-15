@@ -8,14 +8,22 @@ import java.awt.Graphics;
  *
  * @author jfperren
  */
-public class FramedText extends Frame {
+public class TextView extends Frame {
 
     private Text text;
 
-    public FramedText(double x, double y, double width, double height, double border, Color borderColor, String text,
+    public TextView(double x, double y, double width, double height, double border, Color borderColor, String text,
         String font, Color fontColor) {
         super(x, y, width, height, border, borderColor);
         this.text = new Text(x, y, text, font, fontColor);
+    }
+
+    public TextView(double x, double y, String message, String font, Color fontColor) {
+        this(x, y, 0, 0, 0, Color.WHITE, message, font, fontColor);
+    }
+
+    public TextView(double x, double y, double width, double height, double border, Color borderColor) {
+        this(x, y, width, height, border, borderColor, "", "Arial", Color.WHITE);
     }
 
     public void setText(String newText) {

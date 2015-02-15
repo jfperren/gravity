@@ -19,7 +19,7 @@ public class RefreshTask extends TimerTask {
             case 3:
 
                 // Attraction de tous les corps célestes
-                Applet.this.AttractAll();
+                Applet.this.attractAll();
                 // Test de la collision avec tous les corps céléstes.
                 Applet.this.CollisionTestAll();
 

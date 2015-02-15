@@ -111,8 +111,6 @@ public class Applet extends javax.swing.JApplet {
     // public Writing titre = new Writing("Gravity", "Impact 72", PANEL_WIDTH /
     // 5, PANEL_HEIGHT / 5, Color.white);
     public Star etoileTitre = new Star(PANEL_WIDTH / 2, PANEL_HEIGHT / 6, PANEL_WIDTH / 6, new Color(255, 120, 0));
-    public SpaceCraft fuseeTitre = new SpaceCraft(PANEL_WIDTH / 2, PANEL_HEIGHT / 2, PANEL_WIDTH / 15, couleurNavette1,
-        couleurNavette2, couleurNavette3);
     // public Writing playBouton = new Writing("Play", "Impact 24", 54 *
     // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
     // public Writing nomdujoueur = new Writing(playerName, "Impact 24", 40 *
@@ -949,17 +947,17 @@ public class Applet extends javax.swing.JApplet {
                     case 49: // Touche 1
                         this.screen = 3;
                         this.niveau = 0;
-                        this.restart();
+                        this.reset();
                         break;
                     case 50: // Touche 2
                         this.screen = 3;
                         this.niveau = 1;
-                        this.restart();
+                        this.reset();
                         break;
                     case 51: // Touche 3
                         this.screen = 3;
                         this.niveau = 2;
-                        this.restart();
+                        this.reset();
                         break;
                     case 8: // bouton effacer
                         if (this.cheatCode.length() > 0) {
@@ -1092,19 +1090,19 @@ public class Applet extends javax.swing.JApplet {
                     // Bouton "Niveau 1"
                     this.screen = 3;
                     this.niveau = 0;
-                    this.restart();
+                    this.reset();
                 } else if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4))
                     && (y > ((64 * PANEL_HEIGHT) / 160)) && (y < ((73 * PANEL_HEIGHT) / 160))) {
                     // Bouton "Niveau 2"
                     this.screen = 3;
                     this.niveau = 1;
-                    this.restart();
+                    this.reset();
                 } else if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4))
                     && (y > ((75 * PANEL_HEIGHT) / 160)) && (y < ((84 * PANEL_HEIGHT) / 160))) {
                     // Bouton "Niveau 3"
                     this.screen = 3;
                     this.niveau = 2;
-                    this.restart();
+                    this.reset();
                 } else if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4))
                     && (y > ((86 * PANEL_HEIGHT) / 160)) && (y < ((95 * PANEL_HEIGHT) / 160))) {
                     // Bouton "Controles"
@@ -1154,7 +1152,7 @@ public class Applet extends javax.swing.JApplet {
                 if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4)) && (y > ((64 * PANEL_HEIGHT) / 160))
                     && (y < ((73 * PANEL_HEIGHT) / 160))) {
                     // relance le jeu.
-                    this.restart();
+                    this.reset();
                 } // Sinon en appuyant sur le bouton "Menu"
                 else if ((x > (PANEL_WIDTH / 4)) && (x < ((3 * PANEL_WIDTH) / 4)) && (y > ((75 * PANEL_HEIGHT) / 160))
                     && (y < ((84 * PANEL_HEIGHT) / 160))) {

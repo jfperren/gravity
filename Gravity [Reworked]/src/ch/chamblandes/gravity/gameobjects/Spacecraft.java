@@ -12,8 +12,6 @@ import java.awt.geom.GeneralPath;
 
 public class Spacecraft extends CollidableGameObject {
 
-    public Spacecraft fusee = new Spacecraft(PANEL_WIDTH / 2, (4 * PANEL_HEIGHT) / 5, PANEL_WIDTH / 16);
-
     public enum SpacecraftType {
         SHUTTLE,
         STARWARS
@@ -51,11 +49,10 @@ public class Spacecraft extends CollidableGameObject {
     private int ammo;
     private boolean isAccelerating;
 
-    private SpacecraftType SpacecraftType;
+    private SpacecraftType spacecraftType;
 
-    public Spacecraft(double x, double y, int radius) {
-
-        super(x, y, radius, MASS, STARTING_XSPEED, STARTING_YSPEED);
+    public Spacecraft() {
+        super(PANEL_HEIGHT / 4, PANEL_HEIGHT / 2, PANEL_HEIGHT / 40, MASS, STARTING_XSPEED, STARTING_YSPEED);
 
         this.angle = STARTING_ANGLE;
         this.angularSpeed = STARTING_ANGULAR_SPEED;
@@ -64,15 +61,15 @@ public class Spacecraft extends CollidableGameObject {
         this.ammo = MAX_AMMO;
         this.isAccelerating = false;
 
-        this.SpacecraftType = this.SpacecraftType.SHUTTLE;
+        this.spacecraftType = SpacecraftType.SHUTTLE;
     }
 
     public SpacecraftType getSpacecraftType() {
-        return this.SpacecraftType;
+        return this.spacecraftType;
     }
 
     public void setSpacecraftType(SpacecraftType newType) {
-        this.SpacecraftType = newType;
+        this.spacecraftType = newType;
     }
 
     public void accelerate(double angularAcceleration) {
@@ -145,7 +142,7 @@ public class Spacecraft extends CollidableGameObject {
         // Rotation de la fusée avec comme centre de rotation (posX,posY)
         g2d.rotate(this.getAngle(), this.getX(), this.getY());
 
-        if (this.SpacecraftType == this.SpacecraftType.SHUTTLE) {
+        if (this.spacecraftType == SpacecraftType.SHUTTLE) {
             g.setColor(WHITE);
             g2d.fill(this.createShuttleShape());
             g.setColor(MIDDLE_GRAY);

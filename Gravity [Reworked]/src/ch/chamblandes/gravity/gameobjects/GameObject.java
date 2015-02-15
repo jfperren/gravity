@@ -108,4 +108,12 @@ public abstract class GameObject {
         this.y = this.y + dy;
     }
 
+    /**
+     * Computes what happens when the object takes one hit
+     *
+     * @return {@code true} if the object needs to be removed from the game
+     */
+    public boolean hit() {
+        return false;
+    }
 }

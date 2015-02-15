@@ -18,5 +18,5 @@ Author : @jfperren
 
 Date of Creation : 2010
 
-License :
+License : TODO
 

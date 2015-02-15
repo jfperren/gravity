@@ -9,11 +9,7 @@ import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 import java.util.Timer;
 
-import ch.chamblandes.gravity.displayables.Background;
 import ch.chamblandes.gravity.displayables.Explosion;
-import ch.chamblandes.gravity.gameobjects.BlackHole;
-import ch.chamblandes.gravity.gameobjects.Planet;
-import ch.chamblandes.gravity.gameobjects.Star;
 import ch.chamblandes.gravity.model.RefreshTask;
 import ch.chamblandes.gravity.scores.ScoreIO;
 import ch.chamblandes.view.DisplayPanel;
@@ -28,12 +24,6 @@ public class Applet extends javax.swing.JApplet {
     ScoreIO myIO = new ScoreIO();
     // Définit la taille de l'écran de jeu.
     public DisplayPanel dess = new DisplayPanel(); // écran de jeu
-    public static final int PANEL_HEIGHT = 750; // hauteur du dessin
-    public static final int PANEL_WIDTH = PANEL_HEIGHT / 2; // largeur du
-    // dessin.
-    public static final int MARGIN_HEIGHT = 10; // marge en haut
-
-    public static final int MARGIN_WIDTH = 10; // marge à gauche
 
     String playerName = "";
     double playerScore = 0;
@@ -48,11 +38,7 @@ public class Applet extends javax.swing.JApplet {
     double mPlanete = 1 / 30;// G pour les planètes.
     double mEtoile = 1 / 100;// G pour les étoiles.
     double mTrounoir = 1;// G pour les trous noirs.
-    // Fusée controlée par le joueur et sa position initiale.
-    // public SpaceCraft fusee = new SpaceCraft(PANEL_WIDTH / 2, (4 *
-    // PANEL_HEIGHT) / 5, PANEL_WIDTH / 16,
-    // couleurNavette1, couleurNavette2, couleurNavette3); // vaisseau piloté
-    // par le joueur
+
     double dTakeFuel = 3;// Variable controlant la vitesse de récupération de
     // fuel
     int vProjectile = 2;// Variable controlant le rapport entre la vitesse du
@@ -100,207 +86,16 @@ public class Applet extends javax.swing.JApplet {
     String scores2;// String recevant la chaine de caractères de
     // scoreIO.getScore, niveau 2.
     String scores3;// String recevant la chaine de caractères de
-    // scoreIO.getScore, niveau 3.
-    // Valeur permettant de naviguer entre plusieurs fenêtres de jeu au sein de
-    // la même applette.
-    // 0 : Titre, 1 : Aide, 2 : Menu, 3 : Jeu, 4 : Pause, 5 : GameOver, 6 :
-    // crédits, 7 : Scores, 8 : Cheats
-    int screen = 0;
-    // Objet représentant le fond étoilé présent sur toutes les pages.
-    public Background fond = new Background(0, 0, PANEL_WIDTH, PANEL_HEIGHT * 3);
-    // PAGE TITRE
-    // public Writing titre = new Writing("Gravity", "Impact 72", PANEL_WIDTH /
-    // 5, PANEL_HEIGHT / 5, Color.white);
-    public Star etoileTitre = new Star(PANEL_WIDTH / 2, PANEL_HEIGHT / 6, PANEL_WIDTH / 6, new Color(255, 120, 0));
-    // public Writing playBouton = new Writing("Play", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing nomdujoueur = new Writing(playerName, "Impact 24", 40 *
-    // PANEL_WIDTH / 128, 281 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing instructionTitre = new Writing("Ecrivez votre nom :",
-    // "Impact 24", 34 * PANEL_WIDTH / 128, 259 * PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Asteroid asteroideTitre1 = new Asteroid((2 * PANEL_WIDTH) / 3, (4
-    // * PANEL_HEIGHT) / 5, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre2 = new Asteroid((4 * PANEL_WIDTH) / 5, (12
-    // * PANEL_HEIGHT) / 13, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre3 = new Asteroid(PANEL_WIDTH / 3, (33 *
-    // PANEL_HEIGHT) / 40, 0, 0, PANEL_WIDTH / 50,
-    // new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre4 = new Asteroid((4 * PANEL_WIDTH) / 9, (14
-    // * PANEL_HEIGHT) / 15, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre5 = new Asteroid((8 * PANEL_WIDTH) / 9, (6
-    // * PANEL_HEIGHT) / 7, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre6 = new Asteroid(PANEL_WIDTH / 7, (20 *
-    // PANEL_HEIGHT) / 21, 0, 0, PANEL_WIDTH / 50,
-    // new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre7 = new Asteroid((3 * PANEL_WIDTH) / 4, (14
-    // * PANEL_HEIGHT) / 15, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre8 = new Asteroid((3 * PANEL_WIDTH) / 5, (17
-    // * PANEL_HEIGHT) / 18, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre9 = new Asteroid(PANEL_WIDTH / 4, (10 *
-    // PANEL_HEIGHT) / 11, 0, 0, PANEL_WIDTH / 50,
-    // new Color(90, 60, 20), false);
-    // public Asteroid asteroideTitre10 = new Asteroid(PANEL_WIDTH / 9, (4 *
-    // PANEL_HEIGHT) / 5, 0, 0, PANEL_WIDTH / 50,
-    // new Color(90, 60, 20), false);
-    public Planet planeteTitre1 = new Planet((5 * PANEL_WIDTH) / 6, (3 * PANEL_HEIGHT) / 4, PANEL_WIDTH / 18,
-        new Color(120, 180, 255));
-    public Planet planeteTitre2 = new Planet(PANEL_WIDTH / 4, (7 * PANEL_HEIGHT) / 12, PANEL_WIDTH / 12, new Color(160,
-        30, 10));
-    public Planet planeteTitre3 = new Planet((3 * PANEL_WIDTH) / 4, (2 * PANEL_HEIGHT) / 5, PANEL_WIDTH / 15,
-        new Color(0, 128, 0));
+
     double namelength = 0;
-    // PAGE D'AIDE
-    // public Writing titreAide = new Writing("Aide", "Impact 72", 3 *
-    // PANEL_WIDTH / 10, PANEL_HEIGHT / 8, Color.white);
-    // public Writing butdujeu = new
-    // Writing("Le but du jeu est d'aller le plus loin possible en",
-    // "Impact 16", PANEL_WIDTH / 10, 7 * PANEL_HEIGHT / 32, Color.white);
-    // public Writing butdujeu2 = new Writing("évitant les astres suivants :",
-    // "Impact 16", PANEL_WIDTH / 10, 8 * PANEL_HEIGHT / 32, Color.white);
-    public Planet planeteAide = new Planet(PANEL_WIDTH / 5, (10 * PANEL_HEIGHT) / 32, PANEL_WIDTH / 20,
-        Color.LIGHT_GRAY);
-    public Star etoileAide = new Star((2 * PANEL_WIDTH) / 5, (10 * PANEL_HEIGHT) / 32, PANEL_WIDTH / 20, Color.ORANGE);
-    public BlackHole trounoirAide = new BlackHole((3 * PANEL_WIDTH) / 5, (10 * PANEL_HEIGHT) / 32, PANEL_WIDTH / 20);
-    // public Asteroid asteroideAide = new Asteroid((4 * PANEL_WIDTH) / 5, (10 *
-    // PANEL_HEIGHT) / 32, 0, 0,
-    // PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    // public Writing attraction1 = new
-    // Writing("Bien évidemment, selon la Loi de la Gravitation,", "impact 16",
-    // PANEL_WIDTH / 10, 29 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing attraction2 = new
-    // Writing("ces astres vous attirent vers eux.", "impact 16", PANEL_WIDTH /
-    // 10, 31 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefusee = new
-    // Writing("La fusée se commande avec les touches AWSD", "Impact 16",
-    // PANEL_WIDTH / 10, 35 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefusee2 = new
-    // Writing("ou les flèches directionnelles.", "Impact 16", PANEL_WIDTH /
-    // 10, 37 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefuseeW = new Writing("W/S: accelerer/décélérer",
-    // "Impact 16", PANEL_WIDTH / 10, 39 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefuseeA = new Writing("A/D : pivoter vers la gauche",
-    // "Impact 16", PANEL_WIDTH / 10, 41 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefrottements1 = new
-    // Writing("Faites attention, car comme vous êtes dans le", "Impact 16",
-    // PANEL_WIDTH / 10, 43 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidefrottements2 = new
-    // Writing("vide sidéral, il n'y a pas de frottements.", "Impact 16",
-    // PANEL_WIDTH / 10, 45 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidecarburant1 = new
-    // Writing("Chaque manoeuvre  vous fera perdre  de votre", "Impact 16",
-    // PANEL_WIDTH / 10, 55 * PANEL_HEIGHT / 72, Color.white);
-    // public Writing aidecarburant2 = new
-    // Writing("précieux carburant (barre verte)", "Impact 16", PANEL_WIDTH /
-    // 10, 57 * PANEL_HEIGHT / 72, Color.white);
-    public SpaceCraft fuseeAide = new SpaceCraft((15 * PANEL_WIDTH) / 20, (38 * PANEL_HEIGHT) / 72, PANEL_WIDTH / 15,
-        couleurNavette1, couleurNavette2, couleurNavette3);
+
     boolean isComingFromGame = false;
     boolean isGamePlaying = false;
-    // public Writing AideToMenu = new Writing("Menu", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing AideToGame = new Writing("Retour", "Impact 24", 51 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
-    // Jeu en marche
-    // public Writing votreScore = new Writing("Score", "Impact 22", 7 *
-    // PANEL_WIDTH / 10, 9 * PANEL_HEIGHT / 300, Color.white);
-    // public Writing meilleurScore = new Writing("Meilleur", "Impact 22", 12 *
-    // PANEL_WIDTH / 100, 9 * PANEL_HEIGHT / 300, Color.white);
-    // public Writing fuelLeft = new Writing("Fuel", "Impact 12", 17 *
-    // PANEL_WIDTH / 150, 288 * PANEL_HEIGHT / 300, Color.white);
-    // public Writing munLeft = new Writing("Mun.", "Impact 12", 16 *
-    // PANEL_WIDTH / 150, 279 * PANEL_HEIGHT / 300, Color.white);
-    // Pause et game over
-    // public Writing pauseTitre = new Writing("Pause", "Impact 36", 48 *
-    // PANEL_WIDTH / 128, 62 * PANEL_HEIGHT / 160, Color.white);
-    // public Writing reprendreBouton = new Writing("Reprendre", "Impact 24", 46
-    // * PANEL_WIDTH / 128, 141 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing aideBouton = new Writing("Aide", "Impact 24", 56 *
-    // PANEL_WIDTH / 128, 163 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing arreterBouton = new Writing("Arrêter", "Impact 24", 52 *
-    // PANEL_WIDTH / 128, 185 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing gameoverTitre = new Writing("Game Over", "Impact 36", 37 *
-    // PANEL_WIDTH / 128, 62 * PANEL_HEIGHT / 160, Color.white);
-    // public Writing recommencerBouton = new Writing("Recommencer",
-    // "Impact 24", 39 * PANEL_WIDTH / 128, 141 * PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Writing menuBouton = new Writing("Menu", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 163 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing creditsBouton = new Writing("Crédits", "Impact 24", 52 *
-    // PANEL_WIDTH / 128, 185 * PANEL_HEIGHT / 320, Color.white);
-    // Menu
-    // public Writing titreMenu = new Writing("Menu", "Impact 72", 35 *
-    // PANEL_WIDTH / 128, PANEL_HEIGHT / 4, Color.white);
-    public Planet planeteMenu1 = new Planet((5 * PANEL_WIDTH) / 32, (115 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Planet planeteMenu2 = new Planet((27 * PANEL_WIDTH) / 32, (115 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Star etoileMenu1 = new Star((5 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320, (7 * PANEL_HEIGHT) / 320,
-        Color.orange);
-    public Star etoileMenu2 = new Star((27 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320, (7 * PANEL_HEIGHT) / 320,
-        Color.orange);
-    public BlackHole trouNoirMenu1 = new BlackHole((5 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320);
-    public BlackHole trouNoirMenu2 = new BlackHole((27 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320);
-    // public Writing menuNiveau1Bouton = new Writing("Niveau 1", "Impact 24",
-    // 49 * PANEL_WIDTH / 128, 119 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuNiveau2Bouton = new Writing("Niveau 2", "Impact 24",
-    // 49 * PANEL_WIDTH / 128, 141 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuNiveau3Bouton = new Writing("Niveau 3", "Impact 24",
-    // 49 * PANEL_WIDTH / 128, 163 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuControlesBouton = new Writing("Aide", "Impact 24", 55
-    // * PANEL_WIDTH / 128, 185 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuCreditsBouton = new Writing("Crédits", "Impact 24",
-    // 51 * PANEL_WIDTH / 128, 207 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuScoresBouton = new Writing("Scores", "Impact 24", 52 *
-    // PANEL_WIDTH / 128, 229 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing menuCheatCodeBouton = new Writing("Cheats", "Impact 24",
-    // 52 * PANEL_WIDTH / 128, 251 * PANEL_HEIGHT / 320, Color.white);
-    // Crédits
-    // public Writing creditsToMenu = new Writing("Menu", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing titreCredits = new Writing("Crédits", "Impact 72", 26 *
-    // PANEL_WIDTH / 128, PANEL_HEIGHT / 8, Color.white);
-    // public Writing credits1 = new Writing("Travail de Maturité",
-    // "Impact 32", 22 * PANEL_WIDTH / 128, 80 * PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Writing credits2 = new Writing("2010 - 2011", "Impact 32", 40 *
-    // PANEL_WIDTH / 128, 95 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits3 = new Writing("Auteur :", "Impact 20", 54 *
-    // PANEL_WIDTH / 128, 127 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits4 = new Writing("Julien Perrenoud", "Impact 20", 41
-    // * PANEL_WIDTH / 128, 138 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits5 = new Writing("Responsable :", "Impact 20", 45 *
-    // PANEL_WIDTH / 128, 162 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits6 = new Writing("Lukas  Schellenberg", "Impact 20",
-    // 36 * PANEL_WIDTH / 128, 173 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits7 = new Writing("Remerciements :", "Impact 20", 41
-    // * PANEL_WIDTH / 128, 197 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits8 = new Writing("François Perrenoud", "Impact 20",
-    // 38 * PANEL_WIDTH / 128, 209 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits9 = new Writing("Laura Perrenoud", "Impact 20", 42
-    // * PANEL_WIDTH / 128, 221 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing credits10 = new Writing("Robin Genolet", "Impact 20", 45 *
-    // PANEL_WIDTH / 128, 233 * PANEL_HEIGHT / 320, Color.white);
-    // Scores
-    // public Writing scoresToMenu = new Writing("Menu", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
+
     public int rawScoreTable = 1; // Cette variable permettra de faire défiler
     // le tableau.
     public int levelScoreTable = 1;
-    // public Writing scoresNiveau1Bouton = new Writing("Niv. 1", "Impact 24",
-    // 19 * PANEL_WIDTH / 80, 115 * PANEL_HEIGHT / 160, Color.white);
-    // public Writing scoresNiveau2Bouton = new Writing("Niv. 2", "Impact 24",
-    // 40 * PANEL_WIDTH / 80, 115 * PANEL_HEIGHT / 160, Color.white);
-    // public Writing scoresNiveau3Bouton = new Writing("Niv. 3", "Impact 24",
-    // 61 * PANEL_WIDTH / 80, 115 * PANEL_HEIGHT / 160, Color.white);
+
     public ArrayList<String> unorderedPlayers1 = new ArrayList<String>();
     public ArrayList<Integer> unorderedScores1 = new ArrayList<Integer>();
     public ArrayList<String> unorderedPlayers2 = new ArrayList<String>();
@@ -313,165 +108,10 @@ public class Applet extends javax.swing.JApplet {
     public ArrayList<Integer> orderedScores2 = new ArrayList<Integer>();
     public ArrayList<String> orderedPlayers3 = new ArrayList<String>();
     public ArrayList<Integer> orderedScores3 = new ArrayList<Integer>();
-    // public Writing ScoreCellPlayerTitle = new Writing("Joueur", "Impact 24",
-    // 35 * PANEL_WIDTH / 128, 97 * PANEL_HEIGHT / 320, Color.white);
-    // public Writing ScoreCellScoreTitle = new Writing("Score", "Impact 24", 86
-    // * PANEL_WIDTH / 128, 97 * PANEL_HEIGHT / 320, Color.white);
-    // public Arrow scoreFlecheUp = new Arrow(PANEL_WIDTH / 20 + 9 *
-    // PANEL_HEIGHT / 320, 42 * PANEL_HEIGHT / 160 + 9 * PANEL_HEIGHT / 320,
-    // PANEL_WIDTH / 14, 0);
-    // public Arrow scoreFlecheDown = new Arrow(PANEL_WIDTH / 20 + 9 *
-    // PANEL_HEIGHT / 320, 108 * PANEL_HEIGHT / 160 + 9 * PANEL_HEIGHT / 320,
-    // PANEL_WIDTH / 14, 2);
-    // Cheat codes
-    // public Writing CheatsToMenu = new Writing("Menu", "Impact 24", 54 *
-    // PANEL_WIDTH / 128, 303 * PANEL_HEIGHT / 320, Color.white);
-    public Planet planeteAntiGravity1 = new Planet((5 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Planet planeteAntiGravity2 = new Planet((27 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Star etoileAntiGravity1 = new Star((5 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    public Star etoileAntiGravity2 = new Star((27 * PANEL_WIDTH) / 32, (137 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    public Planet planeteInfiniteFuel1 = new Planet((5 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Planet planeteInfiniteFuel2 = new Planet((27 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Star etoileInfiniteFuel1 = new Star((5 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    public Star etoileInfiniteFuel2 = new Star((27 * PANEL_WIDTH) / 32, (159 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    public Planet planeteStarWarsShip1 = new Planet((5 * PANEL_WIDTH) / 32, (181 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Planet planeteStarWarsShip2 = new Planet((27 * PANEL_WIDTH) / 32, (181 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.LIGHT_GRAY);
-    public Star etoileStarWarsShip1 = new Star((5 * PANEL_WIDTH) / 32, (181 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    public Star etoileStarWarsShip2 = new Star((27 * PANEL_WIDTH) / 32, (181 * PANEL_HEIGHT) / 320,
-        (7 * PANEL_HEIGHT) / 320, Color.orange);
-    // public Writing antiGravityBouton = new Writing("Antigravité",
-    // "Impact 24", 46 * PANEL_WIDTH / 128, 141 * PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Writing infiniteFuelBouton = new Writing("Fuel Infini",
-    // "Impact 24", 47 * PANEL_WIDTH / 128, 163 * PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Writing starWarsShipBouton = new Writing("Vaisseau Star Wars",
-    // "Impact 21", 34 * PANEL_WIDTH / 128, 185 * PANEL_HEIGHT / 320,
-    // Color.white);
+
     String cheatCode = "";// Chaine de caractere contenant les lettres tapées
     // pour arriver a la page de cheats.
     boolean isCheatCodeActivated = false; // Boolean permettant de testé si la
-
-    // Cadres
-    // public Frame cadre1 = new Frame(PANEL_WIDTH / 4, 53 * PANEL_HEIGHT / 160,
-    // PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre2 = new Frame(PANEL_WIDTH / 4, 64 * PANEL_HEIGHT / 160,
-    // PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre3 = new Frame(PANEL_WIDTH / 4, 75 * PANEL_HEIGHT / 160,
-    // PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre4 = new Frame(PANEL_WIDTH / 4, 86 * PANEL_HEIGHT / 160,
-    // PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre5 = new Frame(PANEL_WIDTH / 4, 97 * PANEL_HEIGHT / 160,
-    // PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre6 = new Frame(PANEL_WIDTH / 4, 108 * PANEL_HEIGHT /
-    // 160, PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadre7 = new Frame(PANEL_WIDTH / 4, 119 * PANEL_HEIGHT /
-    // 160, PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadreFuel = new Frame(PANEL_WIDTH / 10, 283 * PANEL_HEIGHT /
-    // 300, 8 * PANEL_WIDTH / 10, 7 * PANEL_HEIGHT / 300, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadreMun = new Frame(PANEL_WIDTH / 10, 274 * PANEL_HEIGHT /
-    // 300, 8 * PANEL_WIDTH / 10, 7 * PANEL_HEIGHT / 300, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadreScore = new Frame(1 * PANEL_WIDTH / 10, 10 *
-    // PANEL_HEIGHT / 300, 2.5 * PANEL_WIDTH / 10, 14 * PANEL_HEIGHT / 300,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame cadreBestScore = new Frame(6.5 * PANEL_WIDTH / 10, 10 *
-    // PANEL_HEIGHT / 300, 2.5 * PANEL_WIDTH / 10, 14 * PANEL_HEIGHT / 300,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_2_Title = new Frame(15 * PANEL_WIDTH / 80, 42 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_3_Title = new Frame(47 * PANEL_WIDTH / 80, 42 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_11 = new Frame(PANEL_WIDTH / 20, 53 * PANEL_HEIGHT
-    // / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT /
-    // 320, Color.white);
-    // public Frame ScoreCell_12 = new Frame(PANEL_WIDTH / 20, 64 * PANEL_HEIGHT
-    // / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT /
-    // 320, Color.white);
-    // public Frame ScoreCell_13 = new Frame(PANEL_WIDTH / 20, 75 * PANEL_HEIGHT
-    // / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT /
-    // 320, Color.white);
-    // public Frame ScoreCell_14 = new Frame(PANEL_WIDTH / 20, 86 * PANEL_HEIGHT
-    // / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT /
-    // 320, Color.white);
-    // public Frame ScoreCell_15 = new Frame(PANEL_WIDTH / 20, 97 * PANEL_HEIGHT
-    // / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT /
-    // 320, Color.white);
-    // public Frame ScoreCell_21 = new Frame(15 * PANEL_WIDTH / 80, 53 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_22 = new Frame(15 * PANEL_WIDTH / 80, 64 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_23 = new Frame(15 * PANEL_WIDTH / 80, 75 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_24 = new Frame(15 * PANEL_WIDTH / 80, 86 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_25 = new Frame(15 * PANEL_WIDTH / 80, 97 *
-    // PANEL_HEIGHT / 160, 3 * PANEL_WIDTH / 8, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_31 = new Frame(47 * PANEL_WIDTH / 80, 53 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_32 = new Frame(47 * PANEL_WIDTH / 80, 64 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_33 = new Frame(47 * PANEL_WIDTH / 80, 75 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_34 = new Frame(47 * PANEL_WIDTH / 80, 86 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_35 = new Frame(47 * PANEL_WIDTH / 80, 97 *
-    // PANEL_HEIGHT / 160, 29 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_lvl1 = new Frame(15 * PANEL_WIDTH / 80, 108 *
-    // PANEL_HEIGHT / 160, 19 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_lvl2 = new Frame(36 * PANEL_WIDTH / 80, 108 *
-    // PANEL_HEIGHT / 160, 19 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_lvl3 = new Frame(57 * PANEL_WIDTH / 80, 108 *
-    // PANEL_HEIGHT / 160, 19 * PANEL_WIDTH / 80, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // //Fleches pour naviguer dans le tableau de scores.
-    // public Frame ScoreCell_VK_UP = new Frame(PANEL_WIDTH / 20, 42 *
-    // PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame ScoreCell_VK_DOWN = new Frame(PANEL_WIDTH / 20, 108 *
-    // PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160, 9 * PANEL_HEIGHT / 160,
-    // PANEL_HEIGHT / 320, Color.white);
-    // public Frame cadreBas = new Frame(PANEL_WIDTH / 4, 145 * PANEL_HEIGHT /
-    // 160, PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-    // public Frame cadreNom = new Frame(PANEL_WIDTH / 4, 134 * PANEL_HEIGHT /
-    // 160, PANEL_WIDTH / 2, 9 * PANEL_HEIGHT / 160, PANEL_HEIGHT / 320,
-    // Color.white);
-
-    // cobinaison a été faite ou non.
 
     public void addScore(int level, String name, int score) {
         switch (level) {
@@ -734,13 +374,9 @@ public class Applet extends javax.swing.JApplet {
     public void myInit() {
 
         this.dess.setBounds(MARGIN_WIDTH, MARGIN_HEIGHT, PANEL_WIDTH, PANEL_HEIGHT); // Emplacement
-        // et
-        // taille
-        // du
-        // dessin
         this.dess.setDoubleBuffered(true); // pour empêcher que l'affichage
-        // clignote
         this.add(this.dess); // rajouter le dessin sur l'applette
+
         this.mainTimer.scheduleAtFixedRate(this.refresh, 0, this.dt);// Le
         // thread
         // de jeu
@@ -869,7 +505,7 @@ public class Applet extends javax.swing.JApplet {
         }
     }
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_formKeyPressed
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {
 
         // Permet de récupérer le code de la touche pressée.
         int keyPressed = evt.getKeyCode();

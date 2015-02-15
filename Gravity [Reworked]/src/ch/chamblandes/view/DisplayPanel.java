@@ -8,14 +8,25 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+import ch.chamblandes.gravity.model.ScreenManager;
+
 public class DisplayPanel extends JPanel {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
-    // fonction constructeur de l'écran de jeu
+    public static final int HEIGHT = 750; // hauteur du dessin
+    public static final int WIDTH = HEIGHT / 2; // largeur du
+    public static final int MARGIN_HEIGHT = 10; // marge en haut
+    public static final int MARGIN_WIDTH = 10; // marge à gauche
+
+    private ScreenManager screenManager;
+
+    public DisplayPanel() {
+        super();
+
+        this.screenManager = new ScreenManager();
+    }
+
     @Override
     public void paint(Graphics g) {
 
@@ -30,9 +41,9 @@ public class DisplayPanel extends JPanel {
         // Dessin du fond de l'écran
         fond.paint(g);
 
-        switch (screen) {
+        switch (this.screenManager.getScreen()) {
 
-            case 0: // Ecran titre
+            case TITLE: // Ecran titre
 
                 etoileTitre.paint(g);
                 asteroideTitre1.paint(g);
@@ -58,7 +69,7 @@ public class DisplayPanel extends JPanel {
 
                 break;
 
-            case 1: // écran d'aide
+            case HELP: // écran d'aide
 
                 titreAide.paint(g);
                 butdujeu.paint(g);
@@ -88,7 +99,7 @@ public class DisplayPanel extends JPanel {
                 }
 
                 break;
-            case 2:// Menu
+            case MENU:// Menu
                 titreMenu.paint(g);
                 cadre6.paint(g);
                 cadre1.paint(g);
@@ -113,11 +124,9 @@ public class DisplayPanel extends JPanel {
                     menuCheatCodeBouton.paint(g);
                 }
                 break;
-            case 3:
-            case 4:
-            case 5:
-
-                g.setColor(Color.white);
+            case GAME:
+            case PAUSE:
+            case GAMEOVER:
 
                 // Méthode permettant de dessiner toutes les planètes de la
                 // liste.
@@ -176,6 +185,7 @@ public class DisplayPanel extends JPanel {
                 }
                 i = 0;
 
+                g.setColor(Color.white);
                 cadreScore.paint(g);
                 g.setFont(Font.decode("Impact 26"));
                 String stringPlayerScore;

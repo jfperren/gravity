@@ -10,30 +10,6 @@ import ch.chamblandes.gravity.displayables.Explosion;
 
 public class Asteroid extends CollidableGameObject {
 
-    public Asteroid asteroideTitre1 = new Asteroid((2 * PANEL_WIDTH) / 3, (4 * PANEL_HEIGHT) / 5, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre2 = new Asteroid((4 * PANEL_WIDTH) / 5, (12 * PANEL_HEIGHT) / 13, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre3 = new Asteroid(PANEL_WIDTH / 3, (33 * PANEL_HEIGHT) / 40, 0, 0, PANEL_WIDTH / 50,
-        new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre4 = new Asteroid((4 * PANEL_WIDTH) / 9, (14 * PANEL_HEIGHT) / 15, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre5 = new Asteroid((8 * PANEL_WIDTH) / 9, (6 * PANEL_HEIGHT) / 7, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre6 = new Asteroid(PANEL_WIDTH / 7, (20 * PANEL_HEIGHT) / 21, 0, 0, PANEL_WIDTH / 50,
-        new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre7 = new Asteroid((3 * PANEL_WIDTH) / 4, (14 * PANEL_HEIGHT) / 15, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre8 = new Asteroid((3 * PANEL_WIDTH) / 5, (17 * PANEL_HEIGHT) / 18, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre9 = new Asteroid(PANEL_WIDTH / 4, (10 * PANEL_HEIGHT) / 11, 0, 0, PANEL_WIDTH / 50,
-        new Color(90, 60, 20), false);
-    public Asteroid asteroideTitre10 = new Asteroid(PANEL_WIDTH / 9, (4 * PANEL_HEIGHT) / 5, 0, 0, PANEL_WIDTH / 50,
-        new Color(90, 60, 20), false);
-
-    public Asteroid asteroideAide = new Asteroid((4 * PANEL_WIDTH) / 5, (10 * PANEL_HEIGHT) / 32, 0, 0,
-        PANEL_WIDTH / 50, new Color(90, 60, 20), false);
-
     int astType = (int) (Math.random() * 3);// Type de dessin.
 
     boolean isExploding = false;

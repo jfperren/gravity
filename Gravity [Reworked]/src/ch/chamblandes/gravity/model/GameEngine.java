@@ -17,6 +17,8 @@ import ch.chamblandes.gravity.gameobjects.Star;
 
 public class GameEngine {
 
+    public static int UNIT = 750;
+
     public enum Level {
         ONE(5000, 5000),
         TWO(3000, 3000),

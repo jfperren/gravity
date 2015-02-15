@@ -7,8 +7,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 
-import ch.chamblandes.gravity.Applet;
-
 public class Arrow extends RectangularDisplayable {
 
     public enum Orientation {
@@ -24,17 +22,9 @@ public class Arrow extends RectangularDisplayable {
         }
 
         public double getAngle() {
-            return angle;
+            return this.angle;
         }
     }
-
-    public Arrow scoreFlecheUp =
-        new Arrow((Applet.PANEL_WIDTH / 20) + ((9 * Applet.PANEL_HEIGHT) / 320), ((42 * Applet.PANEL_HEIGHT) / 160)
-            + ((9 * Applet.PANEL_HEIGHT) / 320), Applet.PANEL_WIDTH / 14, Orientation.UP);
-
-    public Arrow scoreFlecheDown = new Arrow((Applet.PANEL_WIDTH / 20) + ((9 * Applet.PANEL_HEIGHT) / 320),
-        ((108 * Applet.PANEL_HEIGHT) / 160) + ((9 * Applet.PANEL_HEIGHT) / 320), Applet.PANEL_WIDTH / 14,
-        Orientation.DOWN);
 
     private Orientation orientation;
 
@@ -75,7 +65,7 @@ public class Arrow extends RectangularDisplayable {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         AffineTransform transform = g2d.getTransform();
         // Rotation de la fleche avec comme centre de rotation (x,y)
-        g2d.rotate(orientation.getAngle(), this.getX(), this.getY());
+        g2d.rotate(this.orientation.getAngle(), this.getX(), this.getY());
         g2d.setColor(Color.white);
         g2d.fill(this.getShape());
         // Retour à l'état graphique précédent.

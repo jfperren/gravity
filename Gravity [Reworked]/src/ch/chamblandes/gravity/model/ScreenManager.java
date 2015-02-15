@@ -1,4 +1,4 @@
-package ch.chamblandes.view;
+package ch.chamblandes.gravity.model;
 
 public class ScreenManager {
     public enum Screen {

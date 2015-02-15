@@ -22,5 +22,5 @@ Date of Creation : 2010
 
 License : TODO
 
-Website : WIP
+Special thanks to Lukas Schellenberg.
 

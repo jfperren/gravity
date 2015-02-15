@@ -1,4 +1,4 @@
-package ch.chamlandes.gravity.ressources;
+package ch.chamblandes.gravity.ressources;
 
 import ch.chamblandes.gravity.displayables.Background;
 

@@ -9,9 +9,9 @@ import ch.chamblandes.gravity.displayables.Background;
 import ch.chamblandes.gravity.displayables.Button;
 import ch.chamblandes.gravity.displayables.TextView;
 import ch.chamblandes.gravity.model.ScreenManager.Screen;
-import ch.chamlandes.gravity.ressources.Buttons;
-import ch.chamlandes.gravity.ressources.Drawings;
-import ch.chamlandes.gravity.ressources.TextViews;
+import ch.chamblandes.gravity.ressources.Buttons;
+import ch.chamblandes.gravity.ressources.Drawings;
+import ch.chamblandes.gravity.ressources.TextViews;
 
 public class RessourceManager {
 

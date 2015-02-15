@@ -1,4 +1,4 @@
-package ch.chamlandes.gravity.ressources;
+package ch.chamblandes.gravity.ressources;
 
 import static ch.chamblandes.gravity.view.DisplayPanel.HEIGHT;
 import static ch.chamblandes.gravity.view.DisplayPanel.WIDTH;

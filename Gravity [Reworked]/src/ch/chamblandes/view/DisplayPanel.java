@@ -1,4 +1,4 @@
-package ch.chamblandes.gravity;
+package ch.chamblandes.view;
 
 import java.awt.Color;
 import java.awt.Font;

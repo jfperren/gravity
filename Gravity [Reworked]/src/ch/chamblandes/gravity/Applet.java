@@ -16,6 +16,7 @@ import ch.chamblandes.gravity.gameobjects.Planet;
 import ch.chamblandes.gravity.gameobjects.Star;
 import ch.chamblandes.gravity.model.RefreshTask;
 import ch.chamblandes.gravity.scores.ScoreIO;
+import ch.chamblandes.view.DisplayPanel;
 
 /**
  * @author julienperrenoud

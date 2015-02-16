@@ -18,6 +18,6 @@ Author : [Julien Perrenoud](https://github.com/jfperren)
 
 Date of Creation : Fall 2011
 
-License : TODO
+License : Apache 2.0
 
 Special thanks to Lukas Schellenberg.

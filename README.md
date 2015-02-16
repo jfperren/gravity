@@ -21,4 +21,3 @@ Date of Creation : Fall 2011
 License : TODO
 
 Special thanks to Lukas Schellenberg.
-
